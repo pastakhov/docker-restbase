@@ -5,14 +5,14 @@ MAINTAINER pastakhov@yandex.ru
 ENV RB_HOME=/var/lib/restbase \
     RB_DATA=/data \
     RB_USER=restbase \
-    RB_VERSION=0.16.9
+    RB_BRANCH=v0.16.9
 
 # restbase setup
 RUN set -x; \
     # Core
     mkdir -p $RB_HOME \
     && git clone \
-        --branch v${RB_VERSION} \
+        --branch $RB_BRANCH \
         --single-branch \
         --depth 1 \
         --quiet \
