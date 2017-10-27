@@ -1,22 +1,6 @@
-FROM ubuntu:16.04
+FROM node:latest
 
 MAINTAINER pastakhov@yandex.ru
-
-# Install requered packages
-RUN set -x; \
-    apt-get update \
-    && apt-get install -y --no-install-recommends \
-        ca-certificates \
-        git \
-        nodejs \
-        npm \
-    && rm -rf /var/lib/apt/lists/* \
-    && rm -rf /var/cache/apt/archives/*
-
-# Update npm
-RUN set -x; \
-    npm install -g npm \
-    && ln -s /usr/bin/nodejs /usr/bin/node
 
 ENV RB_HOME=/var/lib/restbase \
     RB_DATA=/data \
