@@ -1,34 +1,18 @@
-FROM ubuntu:16.04
+FROM node:latest
 
 MAINTAINER pastakhov@yandex.ru
-
-# Install requered packages
-RUN set -x; \
-    apt-get update \
-    && apt-get install -y --no-install-recommends \
-        ca-certificates \
-        git \
-        nodejs \
-        npm \
-    && rm -rf /var/lib/apt/lists/* \
-    && rm -rf /var/cache/apt/archives/*
-
-# Update npm
-RUN set -x; \
-    npm install -g npm \
-    && ln -s /usr/bin/nodejs /usr/bin/node
 
 ENV RB_HOME=/var/lib/restbase \
     RB_DATA=/data \
     RB_USER=restbase \
-    RB_VERSION=0.16.9
+    RB_BRANCH=v0.16.9
 
 # restbase setup
 RUN set -x; \
     # Core
     mkdir -p $RB_HOME \
     && git clone \
-        --branch v${RB_VERSION} \
+        --branch $RB_BRANCH \
         --single-branch \
         --depth 1 \
         --quiet \
