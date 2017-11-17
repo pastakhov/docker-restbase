@@ -89,7 +89,7 @@ if [ -n "$RB_CONF_PDF_URI" ]; then
         pdf:
           uri: $RB_CONF_PDF_URI
           cache_control: ${RB_CONF_PDF_CACHE_CONTROL:-s-maxage=600, max-age=600}
-          secret: secret
+          secret: ${RB_CONF_PDF_SECRET:-secret}
 EOT
 fi
 
