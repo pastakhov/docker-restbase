@@ -189,4 +189,7 @@ logging:
 num_workers: ${RB_CONF_NUM_WORKERS:-'0'}
 EOT
 
+# Use HTTP instead of HTTPS in pdf.yaml
+sed -i -e 's#https://{{domain}}#http://{{domain}}#' v1/pdf.yaml
+
 su -c 'npm start' $RB_USER

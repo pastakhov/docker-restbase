@@ -43,6 +43,8 @@ paths:
                 - path: v1/mobileapps.yaml
                   options: '{{merge({"response_cache_control": options.purged_cache_control},
                                 options.mobileapps)}}'
+                - path: v1/pdf.js
+                  options: '{{options.pdf}}'
             /transform:
               x-modules:
                 - path: v1/transform.yaml
