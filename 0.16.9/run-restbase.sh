@@ -89,7 +89,7 @@ if [ -n "$RB_CONF_PDF_URI" ]; then
         pdf:
           uri: $RB_CONF_PDF_URI
           cache_control: ${RB_CONF_PDF_CACHE_CONTROL:-s-maxage=600, max-age=600}
-          secret: secret
+          secret: ${RB_CONF_PDF_SECRET:-secret}
 EOT
 fi
 
@@ -188,5 +188,8 @@ logging:
 # Use 'ncpu' to run as many workers as there are CPU units
 num_workers: ${RB_CONF_NUM_WORKERS:-'0'}
 EOT
+
+# Use HTTP instead of HTTPS in pdf.yaml
+sed -i -e 's#https://{{domain}}#http://{{domain}}#' v1/pdf.yaml
 
 su -c 'npm start' $RB_USER
